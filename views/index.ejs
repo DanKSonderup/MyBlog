@@ -1,0 +1,43 @@
+<div class="author">
+    <br>
+    <h3 class="author_heading">Velkommen til min blog med opslag om erfaringer, viden og projekter</h3>
+    <br>
+</div>
+
+<div class="hero_row">
+    <div class="hero_column"><img src="../img/coder.gif" class="hero-image"></div>
+    <div class="hero_column">
+        <p>Mit navn er Daniel Sønderup og jeg går til dagligt på datamatiker uddannelsen i Aarhus. Denne blog er lavet
+            som et projekt med ønsket om at få erfaring med dele af MERN stacken. <br><br>Til denne blog er der benyttet
+            Node.JS, Express og MongoDB. Bloggen er desuden blevet viderebygget hen ad vejen til at indeholde opslag
+            omkring min læring, beskrivelser af fritidsprojekter og et indblik i hvem jeg er som person. Jeg håber du
+            som potentiel arbejdsgiver har lyst til at tage et kig ind i hvem jeg er og hvad jeg kan</p>
+    </div>
+</div>
+
+<div>
+    <section class="articles">
+        <h2 class="articles__heading"></h2>
+
+        <ul class="article-ul">
+            <% data.forEach(element=> { %>
+                <li>
+                    <a href="/post/<%= element._id %>">
+                        <span>
+                            <%= element.title%>
+                        </span>
+                        <span class="article-list__date">
+                            <%= element.createdAt.toDateString() %>
+                        </span>
+                    </a>
+                </li>
+                <% }) %>
+        </ul>
+        <% if (nextPage !==null) { %>
+            <a href="/?page=<%= nextPage %>" class="pagination">&lt; Se tidligere opslag</a>
+            <% } %>
+                <% if (previousPage !==null) { %>
+                    <a href="/?page=<%= previousPage %>" class="back-pagination">&lt; Se nyere opslag</a>
+                    <% } %>
+    </section>
+</div>
