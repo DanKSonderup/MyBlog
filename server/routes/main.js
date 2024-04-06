@@ -49,13 +49,6 @@ router.get('', async (req, res) => {
     }
 });
 
-app.get('/woostats', (req, res) => {
-    axios.get('http://localhost:3000/', {
-        params: { ...req.query, name: 'Device A' }, //Fetch datas from params
-    }).then(result => {
-        res.send(result)
-    })
-})
 
 /**
  * GET /
