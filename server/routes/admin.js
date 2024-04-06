@@ -34,7 +34,7 @@ const authMiddleware = (req, res, next) => {
  * GET /
  * Admin - Login Page
 */
-router.get('/admin', async (req, res) => {
+router.get('/myblog/admin', async (req, res) => {
     try {
         const locals = {
             title: "Admin",
@@ -52,7 +52,7 @@ router.get('/admin', async (req, res) => {
  * POST /
  * Admin - Check Login
 */
-router.post('/admin', async (req, res) => {
+router.post('/myblog/admin', async (req, res) => {
     try {
         const { username, password } = req.body;
 
