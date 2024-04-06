@@ -3,6 +3,7 @@
 const express = require('express');
 const router = express.Router();
 const Post = require('../models/Post');
+const axios = require('axios');
 
 /*
 GET / Home
@@ -46,9 +47,15 @@ router.get('', async (req, res) => {
     } catch (error) {
         console.log(error);
     }
-
 });
 
+app.get('/woostats', (req, res) => {
+    axios.get('http://localhost:3000/', {
+        params: { ...req.query, name: 'Device A' }, //Fetch datas from params
+    }).then(result => {
+        res.send(result)
+    })
+})
 
 /**
  * GET /
