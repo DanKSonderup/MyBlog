@@ -12,7 +12,7 @@ GET / Home
  * GET /
  * HOME
 */
-router.get('/myblog', async (req, res) => {
+router.get('', async (req, res) => {
     try {
         const locals = {
             title: "Min NodeJs Blog",
@@ -53,7 +53,7 @@ router.get('/myblog', async (req, res) => {
  * GET /
  * Post :id
 */
-router.get('/myblog/post/:id', async (req, res) => {
+router.get('post/:id', async (req, res) => {
     try {
         let slug = req.params.id;
 
@@ -80,7 +80,7 @@ router.get('/myblog/post/:id', async (req, res) => {
  * POST /
  * Post - searchTerm
 */
-router.post('/myblog/search', async (req, res) => {
+router.post('search', async (req, res) => {
     try {
         const locals = {
             title: "Seach",
@@ -114,7 +114,7 @@ router.post('/myblog/search', async (req, res) => {
  * GET /
  * About
 */
-router.get('/myblog/about', (req, res) => {
+router.get('about', (req, res) => {
     res.render('about', {
         currentRoute: '/about'
     });
