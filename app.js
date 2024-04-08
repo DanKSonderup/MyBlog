@@ -17,6 +17,11 @@ const PORT = process.env.PORT || 5000;
 // Database forbindelse
 connectDB();
 
+router.use(function (req, res, next) {
+    res.locals.url = req.protocol + '://' + req.headers.host + req.url;
+    next();
+});
+
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cookieParser());
@@ -44,8 +49,8 @@ app.set('view engine', 'ejs');
 app.locals.isActiveRoute = isActiveRoute;
 
 
-app.use('/myblog', require('./server/routes/main'));
-app.use('/myblog', require('./server/routes/admin'));
+app.use('/', require('./server/routes/main'));
+app.use('/', require('./server/routes/admin'));
 
 app.listen(PORT, () => {
     console.log(`App listening on port ${PORT}`);

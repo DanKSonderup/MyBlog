@@ -34,7 +34,7 @@ const authMiddleware = (req, res, next) => {
  * GET /
  * Admin - Login Page
 */
-router.get('/myblog/admin', async (req, res) => {
+router.get('/admin', async (req, res) => {
     try {
         const locals = {
             title: "Admin",
@@ -52,7 +52,7 @@ router.get('/myblog/admin', async (req, res) => {
  * POST /
  * Admin - Check Login
 */
-router.post('/myblog/admin', async (req, res) => {
+router.post('/admin', async (req, res) => {
     try {
         const { username, password } = req.body;
 
@@ -233,7 +233,7 @@ router.delete('/delete-post/:id', authMiddleware, async (req, res) => {
 
     try {
         await Post.deleteOne({ _id: req.params.id });
-        res.redirect('/dashboard');
+        res.redirect('dashboard');
     } catch (error) {
         console.log(error);
     }
