@@ -39,7 +39,7 @@ app.use(session({
     //cookie: { maxAge: new Date ( Date.now() + (3600000) ) } 
 }));
 
-app.use(express.static('/public'));
+app.use(express.static(path.join(__dirname, 'public')));
 // app.use('/myblog/css', express.static(path.join(__dirname, 'public')));
 
 // Template Engine
