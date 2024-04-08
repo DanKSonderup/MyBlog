@@ -56,8 +56,8 @@ app.use('/js', express.static(path.join(__dirname, 'public/js')));
 app.use('/img', express.static(path.join(__dirname, 'public/img')));
 */
 
-app.use('/', require('./server/routes/main'));
-app.use('/', require('./server/routes/admin'));
+app.use('/blog', require('./server/routes/main'));
+app.use('/blog', require('./server/routes/admin'));
 
 app.listen(PORT, () => {
     console.log(`App listening on port ${PORT}`);
