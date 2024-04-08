@@ -49,12 +49,14 @@ app.set('view engine', 'ejs');
 
 app.locals.isActiveRoute = isActiveRoute;
 
+/*
 app.use('/css', express.static(path.join(__dirname, 'public/css')));
 app.use('/js', express.static(path.join(__dirname, 'public/js')));
 app.use('/img', express.static(path.join(__dirname, 'public/img')));
+*/
 
-app.use('/myblog/', require('./server/routes/main'));
-app.use('/myblog/', require('./server/routes/admin'));
+app.use('/', require('./server/routes/main'));
+app.use('/', require('./server/routes/admin'));
 
 app.listen(PORT, () => {
     console.log(`App listening on port ${PORT}`);
