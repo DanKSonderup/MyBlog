@@ -27,7 +27,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cookieParser());
 app.use(methodOverride('_method'));
-router.use(() => { });
+// router.use(() => { });
 
 app.use(session({
     secret: 'keyboard cat',
