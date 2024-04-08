@@ -1,6 +1,7 @@
 require('dotenv').config();
 
 const express = require('express');
+const path = require('path');
 const router = express.Router()
 const expressLayout = require('express-ejs-layouts');
 const methodOverride = require('method-override');
@@ -38,7 +39,7 @@ app.use(session({
     //cookie: { maxAge: new Date ( Date.now() + (3600000) ) } 
 }));
 
-app.use(express.static('public'));
+app.use('/myblog/css', express.static(path.join(__dirname, 'public')));
 
 // Template Engine
 app.use(expressLayout);
@@ -48,9 +49,12 @@ app.set('view engine', 'ejs');
 
 app.locals.isActiveRoute = isActiveRoute;
 
+app.use('/css', express.static(path.join(__dirname, 'public/css')));
+app.use('/js', express.static(path.join(__dirname, 'public/js')));
+app.use('/img', express.static(path.join(__dirname, 'public/img')));
 
-app.use('/', require('./server/routes/main'));
-app.use('/', require('./server/routes/admin'));
+app.use('/myblog/', require('./server/routes/main'));
+app.use('/myblog/', require('./server/routes/admin'));
 
 app.listen(PORT, () => {
     console.log(`App listening on port ${PORT}`);
