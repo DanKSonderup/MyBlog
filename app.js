@@ -39,7 +39,7 @@ app.use(session({
     //cookie: { maxAge: new Date ( Date.now() + (3600000) ) } 
 }));
 
-app.use(express.static(__dirname + '/public'));
+app.use(express.static('/public'));
 // app.use('/myblog/css', express.static(path.join(__dirname, 'public')));
 
 // Template Engine
@@ -56,8 +56,8 @@ app.use('/js', express.static(path.join(__dirname, 'public/js')));
 app.use('/img', express.static(path.join(__dirname, 'public/img')));
 */
 
-app.use('/blog', require('./server/routes/main'));
-app.use('/blog', require('./server/routes/admin'));
+app.use('/', require('./server/routes/main'));
+app.use('/', require('./server/routes/admin'));
 
 app.listen(PORT, () => {
     console.log(`App listening on port ${PORT}`);
