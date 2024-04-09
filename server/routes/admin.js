@@ -70,7 +70,7 @@ router.post('/admin', async (req, res) => {
 
         const token = jwt.sign({ userId: user._id }, jwtSecret);
         res.cookie('token', token, { httpOnly: true });
-        res.redirect('/dashboard');
+        res.redirect('/blog/dashboard');
 
     } catch (error) {
         console.log(error);
@@ -140,7 +140,7 @@ router.post('/add-post', authMiddleware, async (req, res) => {
             });
 
             await Post.create(newPost);
-            res.redirect('/dashboard');
+            res.redirect('/blog/dashboard');
         } catch (error) {
             console.log(error);
         }
@@ -191,7 +191,7 @@ router.put('/edit-post/:id', authMiddleware, async (req, res) => {
             updatedAt: Date.now()
         });
 
-        res.redirect(`/edit-post/${req.params.id}`);
+        res.redirect(`/blog/edit-post/${req.params.id}`);
 
     } catch (error) {
         console.log(error);
@@ -233,7 +233,7 @@ router.delete('/delete-post/:id', authMiddleware, async (req, res) => {
 
     try {
         await Post.deleteOne({ _id: req.params.id });
-        res.redirect('dashboard');
+        res.redirect('/blog/dashboard');
     } catch (error) {
         console.log(error);
     }
@@ -248,7 +248,7 @@ router.delete('/delete-post/:id', authMiddleware, async (req, res) => {
 router.get('/logout', (req, res) => {
     res.clearCookie('token');
     //res.json({ message: 'Logout successful.'});
-    res.redirect('/');
+    res.redirect('/blog');
 });
 
 
